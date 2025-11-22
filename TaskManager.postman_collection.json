@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Task Manager",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "a12f91b0-abc1-45ed-9f34-77ccdf6c9011"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/users/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/users/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/users/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "profile"]
+        }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"New Task\",\n  \"description\": \"Testing Postman\",\n  \"priority\": \"high\",\n  \"status\": \"pending\",\n  \"dueDate\": \"2026-01-01\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/tasks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/tasks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/users/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "logout"]
+        }
+      }
+    }
+  ]
+}
