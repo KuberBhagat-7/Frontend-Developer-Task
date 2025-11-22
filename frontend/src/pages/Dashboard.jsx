@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [filterStatus, setFilterStatus] = useState('all');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const dispatch = useDispatch();
 
@@ -32,10 +33,16 @@ const Dashboard = () => {
 
   const today = new Date().toDateString();
 
-  const filteredTasks = tasks.filter((task) => {
+const filteredTasks = tasks
+  .filter((task) => {
     if (filterStatus === 'all') return true;
     return task.status === filterStatus;
+  })
+  .filter((task) => {
+    return task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           task.description.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
 
   const dueTodayCount = tasks.filter(
     (task) =>
@@ -102,6 +109,16 @@ const Dashboard = () => {
       </div>
 
       {/* Filter Buttons */}
+      <div className="mb-6">
+  <input
+    type="text"
+    placeholder="Search tasks..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  />
+</div>
+
       <div className="flex space-x-2 mb-6">
         {['all', 'pending', 'completed'].map((status) => (
           <button
